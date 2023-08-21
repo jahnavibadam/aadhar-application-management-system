@@ -3,7 +3,7 @@ import java.util.*;
 
 public class AadharGenerator implements AadharVerification {
     private Map<String, Applicant> applicantDatabase = new HashMap<>();
-    private int currentAadharNumber = 100000000; // Starting Aadhar number
+    private int currentAadharNumber = 100000000;
 
     // Constructor
 
@@ -49,7 +49,6 @@ public class AadharGenerator implements AadharVerification {
 
     private void generateAadharNumber(Applicant applicant) {
         String aadharNumber = String.valueOf(currentAadharNumber);
-        // Pad with zeros if the Aadhar number length is less than 12 digits
         aadharNumber = "0".repeat(Math.max(0, 12 - aadharNumber.length())) + aadharNumber;
         applicant.setAadharNumber(aadharNumber);
         currentAadharNumber++;
@@ -59,10 +58,7 @@ public class AadharGenerator implements AadharVerification {
         for (Applicant applicant : applicantDatabase.values()) {
             System.out.println("Name: " + applicant.getName());
             System.out.println("Aadhar Number: " + applicant.getAadharNumber());
-            // Print other details
             System.out.println();
         }
     }
-
-    // Other methods if needed
 }
